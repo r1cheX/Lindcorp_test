@@ -1,3 +1,8 @@
+<!-- <mat-card> -->
+    <!-- <mat-card-actions> -->
+        <!-- <button mat-raised-button color="primary" (click)="createProduct()">Crear producto</button> -->
+    <!-- </mat-card-actions> -->
+<!-- </mat-card> -->
 <mat-table [dataSource]="listProducts">
     <ng-container matColumnDef="ean">
         <mat-header-cell *matHeaderCellDef> EAN </mat-header-cell>
@@ -22,6 +27,14 @@
         <mat-header-cell *matHeaderCellDef> Costo </mat-header-cell>
         <mat-cell *matCellDef="let product"> {{product.costo}} </mat-cell>
     </ng-container>
+    <!-- make a matColumnDef=acciones -->
+    <!-- <ng-container matColumnDef="acciones"> -->
+        <!-- <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell> -->
+        <!-- <mat-cell *matCellDef="let product"> -->
+            <!-- <button mat-raised-button color="accent" (click)="editProduct(product)">Editar</button> -->
+            <!-- <button mat-raised-button color="warn" (click)="deleteProduct(product)">Eliminar</button> -->
+        <!-- </mat-cell> -->
+    <!-- </ng-container> -->
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
