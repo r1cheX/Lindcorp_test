@@ -15,19 +15,19 @@ export class StockService {
   }
 
   getStocks(): Observable<StockModel[]> {
-    return this.httpClient.get<StockModel[]>('http://localhost/codeigniter/backend_test/public/api/stock/' + '/findAll').pipe(map(res => res));
+    return this.httpClient.get<StockModel[]>('http://localhost:8080/Lindcorp_test/public/api/stock/' + '/findAll').pipe(map(res => res));
   }
 
   saveStock(request: any): Observable<any> {
-    return this.httpClient.post<any>('http://localhost/codeigniter/backend_test/public/api/stock/' + '/create', request).pipe(map(res => res));
+    return this.httpClient.post<any>('http://localhost:8080/Lindcorp_test/public/api/stock/' + '/create', request).pipe(map(res => res));
   }
 
   updateStock(request: any): Observable<any> {
-    return this.httpClient.post<any>('http://localhost/codeigniter/backend_test/public/api/stock/' + '/update', request).pipe(map(res => res));
+    return this.httpClient.post<any>('http://localhost:8080/Lindcorp_test/public/api/stock/' + '/update', request).pipe(map(res => res));
   }
 
   deleteStock(id: number): Observable<any> {
-    return this.httpClient.get<any>('http://localhost/codeigniter/backend_test/public/api/stock/' + '/delete/' + id).pipe(map(res => res));
+    return this.httpClient.get<any>('http://localhost:8080/Lindcorp_test/public/api/stock/' + '/delete/' + id).pipe(map(res => res));
   }
 
 
