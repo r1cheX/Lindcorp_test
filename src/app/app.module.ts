@@ -16,17 +16,24 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ProductComponent } from './components/product/product.component'
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { ProductComponent } from './components/product/product.component';
 import { MatTableModule } from '@angular/material/table'
+import { RouterModule, Routes } from '@angular/router';
+import { StockComponent } from './components/stock/stock.component';
 
+const routes: Routes = [
+  { path: 'stocks', component: StockComponent },
+  { path: 'productos', component: ProductComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     DashboardComponent,
-    ProductComponent
+    ProductComponent,
+    StockComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +50,9 @@ import { MatTableModule } from '@angular/material/table'
     MatMenuModule,
     MatTableModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

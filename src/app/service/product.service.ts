@@ -15,19 +15,19 @@ export class ProductService {
 
 
   getProducts(): Observable<ProductModel[]> {
-    return this.httpClient.get<ProductModel[]>('http://localhost:8080/api/producto' + '/list').pipe(map(res=>res));
+    return this.httpClient.get<ProductModel[]>('http://localhost/codeigniter/backend_test/public/api/producto/' + '/findAll').pipe(map(res=>res));
   }
 
   saveProduct(request: any): Observable<any> {
-    return this.httpClient.post<any>('http://localhost:8080/api/producto' + '/save', request).pipe(map(res=>res));
+    return this.httpClient.post<any>('http://localhost/codeigniter/backend_test/public/api/producto/' + '/create', request).pipe(map(res=>res));
   }
 
   updateProduct(request: any): Observable<any> {
-    return this.httpClient.post<any>('http://localhost:8080/api/producto' + '/update', request).pipe(map(res=>res));
+    return this.httpClient.post<any>('http://localhost/codeigniter/backend_test/public/api/producto/' + '/update', request).pipe(map(res=>res));
   }
   
   deleteProduct(id: number): Observable<any> {
-    return this.httpClient.get<any>('http://localhost:8080/api/producto' + '/delete/' + id).pipe(map(res=>res));
+    return this.httpClient.get<any>('http://localhost/codeigniter/backend_test/public/api/producto/' + '/delete/' + id).pipe(map(res=>res));
   }
 
 }
