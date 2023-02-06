@@ -46,6 +46,13 @@ $routes->group('api', function ($routes) {
         $routes->put('update', 'ProductoRestController::update');
         $routes->delete('delete/(:any)', 'ProductoRestController::delete/$1');
     });
+    $routes->group('stock', function ($routes) {
+        $routes->get('findAll', 'StockRestController::findAll');
+        $routes->get('find/(:any)', 'StockRestController::find/$1');
+        $routes->post('create', 'StockRestController::create');
+        $routes->put('update', 'StockRestController::update');
+        $routes->delete('delete/(:any)', 'StockRestController::delete/$1');
+    });
 });
 
 /*
