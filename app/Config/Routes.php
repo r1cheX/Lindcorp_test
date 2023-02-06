@@ -39,6 +39,13 @@ $routes->group('api', function ($routes) {
         $routes->put('update', 'ProveedorRestController::update');
         $routes->delete('delete/(:any)', 'ProveedorRestController::delete/$1');
     });
+    $routes->group('producto', function ($routes) {
+        $routes->get('findAll', 'ProductoRestController::findAll');
+        $routes->get('find/(:any)', 'ProductoRestController::find/$1');
+        $routes->post('create', 'ProductoRestController::create');
+        $routes->put('update', 'ProductoRestController::update');
+        $routes->delete('delete/(:any)', 'ProductoRestController::delete/$1');
+    });
 });
 
 /*
