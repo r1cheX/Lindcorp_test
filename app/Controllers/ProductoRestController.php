@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Controllers;
 
@@ -8,6 +8,7 @@ use CodeIgniter\Controller;
 
 class ProductoRestController extends Controller
 {
+
     public function findAll()
     {
         $productoModel = new ProductoModel();
@@ -31,19 +32,24 @@ class ProductoRestController extends Controller
         $producto = (object) $producto;
         $proveedor = $productoModel->getProveedor($producto->proveedor_id);
         $producto->proveedor = $proveedor;
-    
+
         return $this->response->setStatusCode(200)->setJSON($producto);
     }
-    
+
 
     public function create()
     {
-        $producto = $this->request->getJSON();
-        $productoModel = new ProductoModel();
-        $productoModel->insert($producto);
-        return $this->response->setStatusCode(200)->setJSON('Producto creado');
+        try {
+            $producto = $this->request->getJSON();
+            $productoModel = new ProductoModel();
+            $productoModel->insert($producto);
+            return $this->response->setStatusCode(200)->setJSON('Producto creado');
+        } catch (\Throwable $th) {
+            return $this->response->setStatusCode(500)->setJSON($th->getMessage());
+        }
+
     }
-    
+
 
     public function update()
     {
@@ -52,7 +58,7 @@ class ProductoRestController extends Controller
         $productoModel->update($producto->id, $producto);
         return $this->response->setStatusCode(200)->setJSON('Producto actualizado');
     }
-    
+
 
     public function delete($id)
     {

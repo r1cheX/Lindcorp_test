@@ -31,6 +31,9 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+// Resolve CROS preflight
+$routes ->options('(:any)', 'OptionsController::options');
+
 $routes->group('api', function ($routes) {
     $routes->group('proveedor', function ($routes) {
         $routes->get('findAll', 'ProveedorRestController::findAll');

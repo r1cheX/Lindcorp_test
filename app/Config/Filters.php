@@ -2,13 +2,14 @@
 
 namespace Config;
 
-use App\Filters\CorsFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
+use App\Filters\CorsFilter;
+
 
 class Filters extends BaseConfig
 {
