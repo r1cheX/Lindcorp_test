@@ -1,13 +1,17 @@
 <div class="grid-container">
-  <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+  <mat-grid-list cols="2" rowHeight="650px">
+    <mat-grid-tile
+      *ngFor="let card of cards | async"
+      [colspan]="card.cols"
+      [rowspan]="card.rows"
+    >
       <mat-card class="dashboard-card">
         <mat-card-content class="dashboard-card-content">
-          <ng-container *ngIf="router.url === '/stocks'">
-            <app-stock></app-stock>
+          <ng-container *ngIf="router.url.split('/')[1] === 'stocks'">
+              <app-stock></app-stock>
           </ng-container>
-          <ng-container *ngIf="router.url === '/productos'">
-            <app-product></app-product>
+          <ng-container *ngIf="router.url.split('/')[1] === 'productos'">
+              <app-product></app-product>
           </ng-container>
         </mat-card-content>
       </mat-card>

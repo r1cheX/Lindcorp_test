@@ -1,11 +1,10 @@
 import { SupplierModel } from './supplier-model';
 
 export class ProductModel {
-    id: number = 0;
-    ean: string = '';
-    codigo: string = '';
-    nombre: string = '';
-    costo: number = 0;
-    proveedor: SupplierModel = new SupplierModel();
-    estado: number = 0;
+  ean: string | null | undefined = '';
+  codigo: string | null | undefined = '';
+  nombre: string | null | undefined = '';
+  costo: number | null | undefined = 0;
+  proveedor_id: number | null | undefined = 0;
+  estado: number | null | undefined = 0;
 }

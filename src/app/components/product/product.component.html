@@ -1,41 +1,54 @@
-<!-- <mat-card> -->
-    <!-- <mat-card-actions> -->
-        <!-- <button mat-raised-button color="primary" (click)="createProduct()">Crear producto</button> -->
-    <!-- </mat-card-actions> -->
-<!-- </mat-card> -->
-<mat-table [dataSource]="listProducts">
+<mat-card>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="openDialog('0ms', '0ms')">
+      Crear producto
+    </button>
+  </mat-card-actions>
+</mat-card>
+<section class="example-container mat-elevation-z8" tabindex="0">
+  <mat-table [dataSource]="listProducts">
     <ng-container matColumnDef="ean">
-        <mat-header-cell *matHeaderCellDef> EAN </mat-header-cell>
-        <mat-cell *matCellDef="let product"> {{product.ean}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> EAN </mat-header-cell>
+      <mat-cell *matCellDef="let product"> {{ product.ean }} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="proveedor">
-        <mat-header-cell *matHeaderCellDef> Proveedor </mat-header-cell>
-        <mat-cell *matCellDef="let product"> {{product.proveedor.nombre}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> Proveedor </mat-header-cell>
+      <mat-cell *matCellDef="let product">
+        {{ product.proveedor.nombre }}
+      </mat-cell>
     </ng-container>
-
     <ng-container matColumnDef="codigo">
-        <mat-header-cell *matHeaderCellDef> Código del producto </mat-header-cell>
-        <mat-cell *matCellDef="let product"> {{product.codigo}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> Código del producto </mat-header-cell>
+      <mat-cell *matCellDef="let product"> {{ product.codigo }} </mat-cell>
     </ng-container>
-
     <ng-container matColumnDef="nombre">
-        <mat-header-cell *matHeaderCellDef> Nombre del producto </mat-header-cell>
-        <mat-cell *matCellDef="let product"> {{product.nombre}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> Nombre del producto </mat-header-cell>
+      <mat-cell *matCellDef="let product"> {{ product.nombre }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="costo">
-        <mat-header-cell *matHeaderCellDef> Costo </mat-header-cell>
-        <mat-cell *matCellDef="let product"> {{product.costo}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> Costo </mat-header-cell>
+      <mat-cell *matCellDef="let product"> {{ product.costo }} </mat-cell>
     </ng-container>
     <!-- make a matColumnDef=acciones -->
     <!-- <ng-container matColumnDef="acciones"> -->
-        <!-- <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell> -->
-        <!-- <mat-cell *matCellDef="let product"> -->
-            <!-- <button mat-raised-button color="accent" (click)="editProduct(product)">Editar</button> -->
-            <!-- <button mat-raised-button color="warn" (click)="deleteProduct(product)">Eliminar</button> -->
-        <!-- </mat-cell> -->
+    <!-- <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell> -->
+    <!-- <mat-cell *matCellDef="let product"> -->
+    <!-- <button mat-raised-button color="accent" (click)="editProduct(product)">Editar</button> -->
+    <!-- <button mat-raised-button color="warn" (click)="deleteProduct(product)">Eliminar</button> -->
+    <!-- </mat-cell> -->
     <!-- </ng-container> -->
+    <mat-header-row
+      *matHeaderRowDef="displayedColumns; sticky: true"
+    ></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator
+    [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</section>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>

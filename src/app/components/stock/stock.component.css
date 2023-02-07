@@ -1,23 +1,32 @@
 .mat-table {
-    width: 100%;
+  width: 100%;
 }
 
 .mat-cell {
-    padding: 8px;
-    width: 20%;
+  padding: 8px;
+  width: 20%;
 }
 
 .mat-header-cell {
-    background-color: gray;
-    font-weight: bold;
+  background-color: gray;
+  font-weight: bold;
 }
 
 .mat-row:hover {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 
 @media (max-width: 600px) {
-    .mat-cell {
-        width: 100%;
-    }
+  .mat-cell {
+    width: 100%;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+.example-container {
+  height: 600px;
+  overflow: auto;
 }
