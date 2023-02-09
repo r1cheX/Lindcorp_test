@@ -43,7 +43,7 @@ class ProductoRestController extends Controller
             $producto = $this->request->getJSON();
             $productoModel = new ProductoModel();
             $productoModel->insert($producto);
-            return $this->response->setStatusCode(200)->setJSON('Producto creado');
+            return $this->response->setStatusCode(200)->setJSON(['mensaje' => 'producto creado']);
         } catch (\Throwable $th) {
             return $this->response->setStatusCode(500)->setJSON($th->getMessage());
         }
@@ -56,7 +56,7 @@ class ProductoRestController extends Controller
         $producto = $this->request->getJSON();
         $productoModel = new ProductoModel();
         $productoModel->update($producto->id, $producto);
-        return $this->response->setStatusCode(200)->setJSON('Producto actualizado');
+        return $this->response->setStatusCode(200)->setJSON(['mensaje' => 'producto actualizado']);
     }
 
 
@@ -64,6 +64,6 @@ class ProductoRestController extends Controller
     {
         $productoModel = new ProductoModel();
         $productoModel->delete($id);
-        return $this->response->setStatusCode(200)->setJSON('Producto eliminado');
+        return $this->response->setStatusCode(200)->setJSON(['mensaje' => 'producto eliminado']);
     }
 }

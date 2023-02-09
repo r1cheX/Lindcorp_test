@@ -45,7 +45,7 @@ class StockRestController extends Controller
         $stock = $this->request->getJSON();
         $stockModel = new StockModel();
         $stockModel->insert($stock);
-        return $this->response->setStatusCode(200)->setJSON('Stock creado');
+        return $this->response->setStatusCode(200)->setJSON(['mensaje' => 'stock creado']);
     }
 
     public function update()
@@ -53,13 +53,13 @@ class StockRestController extends Controller
         $stock = $this->request->getJSON();
         $stockModel = new StockModel();
         $stockModel->update($stock->id, $stock);
-        return $this->response->setStatusCode(200)->setJSON('Stock actualizado');
+        return $this->response->setStatusCode(200)->setJSON(['mensaje' => 'stock actualizado']);
     }
 
     public function delete($id)
     {
         $stockModel = new StockModel();
         $stockModel->delete($id);
-        return $this->response->setStatusCode(200)->setJSON('Stock eliminado');
+        return $this->response->setStatusCode(200)->setJSON(['mensaje' => 'producto eliminado']);
     }
 }
