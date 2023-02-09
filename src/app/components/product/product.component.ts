@@ -6,6 +6,7 @@ import { SupplierModel } from '../../model/supplier-model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component';
 
 @Component({
   selector: 'app-product',
@@ -21,11 +22,13 @@ export class ProductComponent implements OnInit {
     'codigo',
     'nombre',
     'costo',
+    'acciones',
   ];
 
   constructor(
     private productService: ProductService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -44,94 +47,38 @@ export class ProductComponent implements OnInit {
     enterAnimationDuration: string,
     exitAnimationDuration: string
   ): void {
-    this.dialog.open(ProductComponentDialog, {
-      width: '250px',
+    this.dialog.open(DialogComponent, {
+      width: '350px',
       enterAnimationDuration,
       exitAnimationDuration,
     });
   }
+
+  // editProduct(
+  //   id: number,
+  //   enterAnimationDuration: string,
+  //   exitAnimationDuration: string
+  // ): void {
+  //   this.dialog.open(DialogComponent, {
+  //     width: '250px',
+  //     enterAnimationDuration,
+  //     exitAnimationDuration,
+  //   });
+  // }
+
+  // async deleteProduct(id: number) {
+  //    this.productService.deleteProduct(id).subscribe(
+  //     (resp) => {
+  //       if (resp) {
+  //         this.ngOnInit();
+  //         this.router.navigate(['productos']);
+  //       }
+  //     },
+  //     (error) => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 }
 
-@Component({
-  selector: 'app-product-dialog',
-  templateUrl: 'product.dialog.html',
-  styleUrls: ['./product.dialog.css'],
-})
-export class ProductComponentDialog implements OnInit {
-  listSuppliers: SupplierModel[] = [];
 
-  numberValidator(control: FormControl) {
-    if (isNaN(control?.value)) {
-      return {
-        number: true,
-      };
-    }
-    return null;
-  }
-
-  form = new FormGroup({
-    ean: new FormControl({ value: null, disabled: false }, [
-      Validators.required,
-      Validators.maxLength(10),
-      Validators.minLength(5),
-    ]),
-    codigo: new FormControl({ value: null, disabled: false }, [
-      Validators.required,
-      Validators.maxLength(10),
-    ]),
-    nombre: new FormControl({ value: null, disabled: false }, [
-      Validators.required,
-      Validators.maxLength(50),
-    ]),
-    costo: new FormControl({ value: null, disabled: false }, [
-      Validators.required,
-      this.numberValidator,
-    ]),
-    proveedor_id: new FormControl({ value: null, disabled: false }, [
-      Validators.required,
-    ]),
-    estado: new FormControl({ value: 1, disabled: false }, [
-      Validators.required,
-    ]),
-  });
-
-  constructor(
-    public dialogRef: MatDialogRef<ProductComponentDialog>,
-    private supplierService: SupplierService,
-    private productService: ProductService,
-    private router: Router
-  ) {}
-
-  ngOnInit(): void {
-    this.listaProveedores();
-  }
-
-  listaProveedores() {
-    this.supplierService.getSuppliers().subscribe((resp) => {
-      if (resp) {
-        this.listSuppliers = resp;
-        console.log('PROVEEDORES--->' + this.listSuppliers);
-      }
-    });
-  }
-
-  create() {
-    if (this.form.invalid) {
-      return;
-    }
-
-    const data = this.form.value;
-    console.log('data------->', data);
-
-    this.productService.saveProduct(data).subscribe(
-      (resp) => {
-        if (resp) {
-          this.router.navigate(['/product']);
-        }
-      },
-      (err: any) => {
-        console.log(err);
-      }
-    );
-  }
-}

@@ -13,9 +13,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule} from '@angular/forms';
-import { ProductComponent, ProductComponentDialog} from './components/product/product.component';
-import { MatTableModule } from '@angular/material/table'
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProductComponent } from './components/product/product.component';
+import { MatTableModule } from '@angular/material/table';
 // import { RouterModule, Routes } from '@angular/router';
 import { StockComponent } from './components/stock/stock.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -23,10 +23,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { DialogComponent } from './components/product/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     DashboardComponent,
     ProductComponent,
     StockComponent,
-    ProductComponentDialog,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +61,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDialogModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -27,9 +27,13 @@ export class ProductService {
   updateProduct(request: any): Observable<any> {
     return this.httpClient.put<any>(this.url + '/update', request).pipe(map(res=>res));
   }
+
+  findProductById(id: number): Observable<any> {
+    return this.httpClient.get<any>(this.url + '/findById/' + id).pipe(map(res=>res));
+  }
   
   deleteProduct(id: number): Observable<any> {
-    return this.httpClient.get<any>(this.url + '/delete/' + id).pipe(map(res=>res));
+    return this.httpClient.delete<any>(this.url + '/delete/' + id).pipe(map(res=>res));
   }
 
 }

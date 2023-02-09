@@ -1,6 +1,7 @@
 import { SupplierModel } from './supplier-model';
 
 export class ProductModel {
+  id: number | null | undefined = 0;
   ean: string | null | undefined = '';
   codigo: string | null | undefined = '';
   nombre: string | null | undefined = '';

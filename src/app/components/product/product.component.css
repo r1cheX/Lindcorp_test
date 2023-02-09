@@ -12,6 +12,7 @@
   font-weight: bold;
 }
 
+
 .mat-row:hover {
   background-color: lightgray;
 }
@@ -36,10 +37,4 @@ table {
 }
 
 
-.add-product-container {
-  padding: 20px;
-}
 
-.mat-card {
-  margin-bottom: 20px;
-}
