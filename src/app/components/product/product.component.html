@@ -1,5 +1,5 @@
-<mat-card>
-  <mat-card-actions>
+<div class="testing">
+  <mat-card-actions style="margin-bottom: 12px">
     <button
       mat-raised-button
       color="primary"
@@ -8,41 +8,59 @@
       Crear producto
     </button>
   </mat-card-actions>
-</mat-card>
+  <mat-form-field>
+    <mat-label>Filtro</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Escriba el nombre del producto"
+      #input
+    />
+  </mat-form-field>
+</div>
+
 <section class="example-container mat-elevation-z8" tabindex="0">
-  <mat-table [dataSource]="listProducts">
+  <mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="ean">
-      <mat-header-cell *matHeaderCellDef> EAN </mat-header-cell>
-      <mat-cell *matCellDef="let product"> {{ product.ean }} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> EAN </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.ean }} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="proveedor">
-      <mat-header-cell *matHeaderCellDef> Proveedor </mat-header-cell>
-      <mat-cell *matCellDef="let product">
-        {{ product.proveedor.nombre }}
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Proveedor
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{ row.proveedor.nombre }}
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="codigo">
-      <mat-header-cell *matHeaderCellDef> Código del producto </mat-header-cell>
-      <mat-cell *matCellDef="let product"> {{ product.codigo }} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Código del producto
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.codigo }} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="nombre">
-      <mat-header-cell *matHeaderCellDef> Nombre del producto </mat-header-cell>
-      <mat-cell *matCellDef="let product"> {{ product.nombre }} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Nombre del producto
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.nombre }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="costo">
-      <mat-header-cell *matHeaderCellDef> Costo </mat-header-cell>
-      <mat-cell *matCellDef="let product"> {{ product.costo }} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Costo
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.costo }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="acciones">
       <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
-      <mat-cell *matCellDef="let product">
-        <button mat-raised-button color="accent" style="margin-right: 12px;" >
-          Editar
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button color="primary" style="margin-right: 12px" (click)="editProduct(row)">
+          <mat-icon>edit</mat-icon>
         </button>
-        <button mat-raised-button color="warn">
-          Eliminar
+        <button mat-icon-button color="warn" (click)="deleteProduct(row.id)">
+          <mat-icon>delete</mat-icon>
         </button>
       </mat-cell>
     </ng-container>
@@ -50,7 +68,9 @@
     <mat-header-row
       *matHeaderRowDef="displayedColumns; sticky: true"
     ></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    <!-- make header static -->
+    <mat-row *matRowDef="let row; columns: displayedColumns; sticky: true">
+    </mat-row>
   </mat-table>
   <mat-paginator
     [length]="100"

@@ -12,7 +12,6 @@
   font-weight: bold;
 }
 
-
 .mat-row:hover {
   background-color: lightgray;
 }
@@ -28,13 +27,17 @@ table {
 }
 
 .example-container {
-  height: 600px;
+  height: 500px;
   overflow: auto;
+}
+
+
+
+.testing {
+  display: flex;
+  flex-direction: column;
 }
 
 .form-element {
   width: 500px;
 }
-
-
-

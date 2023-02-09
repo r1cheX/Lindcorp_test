@@ -27,6 +27,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './components/product/dialog/dialog.component';
+import {MatSortModule} from '@angular/material/sort';
+
 
 @NgModule({
   declarations: [
@@ -59,6 +61,7 @@ import { DialogComponent } from './components/product/dialog/dialog.component';
     MatInputModule,
     MatSelectModule,
     MatDialogModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
